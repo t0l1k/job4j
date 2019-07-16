@@ -1,8 +1,8 @@
 package ru.job4j.condition;
 
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class MaxTest {
@@ -14,6 +14,9 @@ public class MaxTest {
         assertThat(result, is(2));
 
         result = max.max(2, 2);
+        assertThat(result, is(2));
+
+        result = max.max(2, 1);
         assertThat(result, is(2));
     }
 }
