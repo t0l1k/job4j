@@ -29,8 +29,7 @@ public class Triangle {
      * @return
      */
     private boolean exist(double a, double c, double b) {
-        double s = (a + b + c) / 2;
-        return a > 0 && b > 0 && c > 0 || a == s || b == s || c == s;
+        return a + b > c || a + c > b || b + c > a;
     }
 
     /**
