@@ -3,9 +3,6 @@ package ru.job4j.converter;
 public class Converter {
     private static double rurToUsd = 60;
     private static double rurToEur = 70;
-    private static double usdToRur = 1 / rurToUsd;
-    private static double eurToRur = 1 / rurToEur;
-
 
     static double convertRurToEur(double value) {
         return value / rurToEur;
@@ -16,11 +13,10 @@ public class Converter {
     }
 
     static double convertEurToRur(double value) {
-        return value / eurToRur;
+        return value / (1 / rurToEur);
     }
 
     static double convertUsdToRur(double value) {
-        return value / usdToRur;
+        return value / (1 / rurToUsd);
     }
-
 }
