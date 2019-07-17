@@ -11,7 +11,7 @@ public class Mortgage {
                 if (sum <= 0) {
                     break;
                 }
-                amount = (int)sum;
+                amount = (int) sum;
             }
             year++;
         }

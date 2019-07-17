@@ -1,9 +1,8 @@
 package ru.job4j.calculate;
 
 import org.junit.Test;
-import ru.job4j.calculate.Fit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FitTest {
 
@@ -11,7 +10,7 @@ public class FitTest {
     public void manWeight() {
         Fit fit = new Fit();
         double weight = fit.manWeight(180);
-        assertEquals(weight,92.0,0.1);
+        assertEquals(weight, 92.0, 0.1);
     }
 
     @Test
