@@ -2,7 +2,7 @@ package ru.job4j.array;
 
 public class FindLoop {
     public int indexOf(int[] data, int el) {
-        return this.indexOf(data,el,0,data.length);
+        return this.indexOf(data, el, 0, data.length);
     }
 
     public int indexOf(int[] data, int el, int start, int finish) {
