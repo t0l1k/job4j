@@ -12,7 +12,16 @@ public class EndsWith {
      * @return если слово начинаеться с префикса
      */
     public boolean endsWith(String word, String post) {
+        boolean result = true;
+        char[] pst = post.toCharArray();
+        char[] wrd = word.toCharArray();
         // проверить. что массив data имеет первые элементы одинаковые с value
-        return word.endsWith(post);
+        for (int i = 0; i < post.length(); i++) {
+            if (wrd[wrd.length - pst.length + i] != pst[i]) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
