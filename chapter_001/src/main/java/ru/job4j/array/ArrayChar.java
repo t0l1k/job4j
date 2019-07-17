@@ -12,7 +12,16 @@ public class ArrayChar {
      * @return если слово начинаеться с префикса
      */
     public boolean startsWith(String word, String prefix) {
+        boolean result = true;
+        char[] pref = prefix.toCharArray();
+        char[] wrd = word.toCharArray();
         // проверить. что массив data имеет первые элементы одинаковые с value
-        return word.startsWith(prefix);
+        for (int i = 0; i < prefix.length(); i++) {
+            if (wrd[i] != pref[i]) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
