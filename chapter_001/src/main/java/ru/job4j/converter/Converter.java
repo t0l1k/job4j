@@ -13,10 +13,10 @@ public class Converter {
     }
 
     static double convertEurToRur(double value) {
-        return value / (1 / rurToEur);
+        return value * rurToEur;
     }
 
     static double convertUsdToRur(double value) {
-        return value / (1 / rurToUsd);
+        return value * rurToUsd;
     }
 }
