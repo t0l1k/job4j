@@ -1,19 +1,17 @@
 package ru.job4j.array;
 
 public class MatrixCheck {
+    /**
+     * mono Проверить все элементы по диагонали, равны ли первому элементы в углу.
+     *
+     * @param input
+     * @return
+     */
     public boolean mono(boolean[][] input) {
-        int n = 0;
-        boolean valueMinor = input[0][0];
-        boolean valueMajor = input[input.length - 1][0];
         for (int i = 0; i < input.length; i++) {
-            for (int j = 0; j < input[i].length; j++) {
-                if (i == n && j == n) {
-                    if (input[i][j] != valueMinor || input[input.length - i - 1][j] != valueMajor) {
-                        return false;
-                    }
-                }
+            if (input[i][i] != input[0][0] || input[input.length - i - 1][i] != input[input.length - 1][0]) {
+                return false;
             }
-            n++;
         }
         return true;
     }
