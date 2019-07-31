@@ -3,10 +3,10 @@ package ru.job4j.inheritance;
 import java.util.Date;
 
 public class Profession {
-    String name;
-    String surname;
-    String education;
-    Date birthday;
+    protected String name;
+    protected String surname;
+    protected String education;
+    protected Date birthday;
 
     public String getName() {
         return name;
@@ -39,4 +39,16 @@ public class Profession {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+    public static void main(String[] args) {
+        Profession p = new Profession();
+        p.setName("test");
+        System.out.println(p);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
+
