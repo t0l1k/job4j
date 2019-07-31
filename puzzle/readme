@@ -1,3 +1,5 @@
 Постоянно слетает кофигурация, если закрыть этот проект.
 
 --module-path c:\code\tools\javafx-sdk-11.0.2\lib\ --add-modules=javafx.controls,javafx.fxml
+
+--module-path /usr/lib/jvm/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml
