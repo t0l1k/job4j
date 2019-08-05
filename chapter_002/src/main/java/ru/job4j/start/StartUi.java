@@ -1,4 +1,8 @@
-package ru.job4j.tracker;
+package ru.job4j.start;
+
+import ru.job4j.tracker.ConsoleInput;
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Tracker;
 
 public class StartUi {
     private final static String ADD = "0";
