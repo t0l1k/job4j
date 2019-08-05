@@ -65,13 +65,15 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append(id);
-        str.append(",");
+        str.append("Item [id:");
+        str.append(this.id);
+        str.append(", name:");
         str.append(name);
-        str.append(",");
+        str.append(", description:");
         str.append(decs);
-        str.append(",");
+        str.append(", time:");
         str.append(time);
+        str.append("]");
         return str.toString();
     }
 }
