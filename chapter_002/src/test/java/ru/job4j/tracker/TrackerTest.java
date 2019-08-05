@@ -38,7 +38,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenAdd3NewItemThenDeleteOneItem() {
+    public void whenAdd4NewItemThenDeleteOneItem() {
         Tracker tracker = new Tracker();
         long created = System.currentTimeMillis();
         Item item = new Item("test1", "test1Description", created);
@@ -47,7 +47,9 @@ public class TrackerTest {
         tracker.add(item);
         item = new Item("test3", "test3Description", created);
         tracker.add(item);
+        item = new Item("test4", "test4Description", created);
+        tracker.add(item);
         tracker.delete(tracker.findByName("test2")[0].getId());
-        assertThat(tracker.getAll().length, is(2));
+        assertThat(tracker.getAll().length, is(3));
     }
 }
