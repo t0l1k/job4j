@@ -8,11 +8,16 @@ public class Item {
     private String decs;
     private long time;
 
+    public Item(String name, String desc) {
+        this(name, desc, System.currentTimeMillis());
+    }
+
     public Item(String name, String decs, long time) {
         this.name = name;
         this.decs = decs;
         this.time = time;
     }
+
 
     public String getId() {
         return id;

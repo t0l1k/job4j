@@ -54,8 +54,7 @@ public class Tracker {
     public Item findById(String id) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
-                Item item = new Item(items[i].getName(), items[i].getDecs(), items[i].getTime());
-                return item;
+                return items[i];
             }
         }
         return null;
