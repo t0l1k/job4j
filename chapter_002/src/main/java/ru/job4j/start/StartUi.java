@@ -65,13 +65,20 @@ public class StartUi {
     }
 
     private void findById() {
-        String id = input.ask("Enter item ID what to find:");
-        System.out.println(tracker.findById(id) + "," + id);
+        Item result = tracker.findById(input.ask("Enter item ID what to find:"));
+        if (result != null) {
+            System.out.println(result);
+        } else {
+            System.out.println("item with this id not found");
+        }
     }
 
     private void delete() {
-        String id = input.ask("Enter item id to delete:");
-        tracker.delete(tracker.findById(id).getId());
+        if (tracker.delete(input.ask("Enter item id to delete:"))) {
+            System.out.println("Item deleted");
+        } else {
+            System.out.println("Item not found");
+        }
     }
 
     private void edit() {
@@ -79,13 +86,12 @@ public class StartUi {
         String name = input.ask("Enter item name:");
         String desc = input.ask("Enter item description:");
         Item item = new Item(name, desc);
-        System.out.println("id:" + id + " name:" + name + " desc:" + desc + " item:" + item);
         tracker.replace(id, item);
     }
 
     private void show() {
-        for (int i = 0; i < tracker.getAll().length; i++) {
-            System.out.println(tracker.getAll()[i]);
+        for (Item item : tracker.getAll()) {
+            System.out.println(item);
         }
     }
 
