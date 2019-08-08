@@ -39,16 +39,5 @@ public class Profession {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-
-    public static void main(String[] args) {
-        Profession p = new Profession();
-        p.setName("test");
-        System.out.println(p);
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }
 

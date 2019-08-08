@@ -1,13 +1,12 @@
 package ru.job4j.inheritance;
 
 public class Engineer extends Profession {
-    public static void main(String[] args) {
-        Engineer e = new Engineer();
-        System.out.println(e);
+    public Engineer() {
+        this.name = "Enginer";
     }
 
-    public void work() {
-        System.out.println("engineer work");
+    public void draw(Project project) {
+        System.out.println(name + " draw a drawing");
     }
 }
 
