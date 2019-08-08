@@ -4,10 +4,10 @@ public class Triangle implements Shape {
     @Override
     public String draw() {
         return new StringBuilder()
-                .append("  ++")
-                .append(" +  +")
-                .append("+    +")
-                .append("++++++")
+                .append("   ++\n")
+                .append("  +  +\n")
+                .append(" +    +\n")
+                .append("++++++++\n")
                 .toString();
     }
 }
