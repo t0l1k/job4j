@@ -60,16 +60,16 @@ public class StartUi {
         String name = input.ask("Enter item name what to find:");
         Item[] arr = tracker.findByName(name);
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.println("Found:" + arr[i]);
         }
     }
 
     private void findById() {
         Item result = tracker.findById(input.ask("Enter item ID what to find:"));
         if (result != null) {
-            System.out.println(result);
+            System.out.println("Found:" + result);
         } else {
-            System.out.println("item with this id not found");
+            System.out.println("Item with this id not found");
         }
     }
 
@@ -86,7 +86,11 @@ public class StartUi {
         String name = input.ask("Enter item name:");
         String desc = input.ask("Enter item description:");
         Item item = new Item(name, desc);
-        tracker.replace(id, item);
+        if (tracker.replace(id, item)) {
+            System.out.println("Item replace sucess.");
+        } else {
+            System.out.println("Item replace failed.");
+        }
     }
 
     private void show() {
@@ -98,7 +102,9 @@ public class StartUi {
     private void add() {
         String name = input.ask("Enter name:");
         String desc = input.ask("Enter Description:");
-        tracker.add(new Item(name, desc, System.currentTimeMillis()));
+        Item item = new Item(name, desc, System.currentTimeMillis());
+        tracker.add(item);
+        System.out.println("Item added:" + item);
     }
 
     private String showMainMenu() {
