@@ -1,6 +1,7 @@
 package ru.job4j.start;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
@@ -9,9 +10,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class StubTest {
+    Tracker tracker;
+
+    @Before
+    public void setup() {
+        tracker = new Tracker();
+    }
+
+    @Test
+    public void whenUserAddItemThenTrackerHasNewItemWithSameNameAndShowItems() {
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "1", "6"});
+        new StartUi(input, tracker).init();
+        assertThat(tracker.getAll()[0].getName(), is("test name"));
+    }
+
+
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUi(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
@@ -19,7 +34,6 @@ public class StubTest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         new StartUi(input, tracker).init();
@@ -28,7 +42,6 @@ public class StubTest {
 
     @Test
     public void whenDeleteThenTrackerHasDeletedValue() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         tracker.add(new Item("test name2", "desc2"));
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
@@ -38,7 +51,6 @@ public class StubTest {
 
     @Test
     public void whenFindByIdThenTrackerReturnItem() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         tracker.add(new Item("test name2", "desc2"));
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
@@ -49,7 +61,6 @@ public class StubTest {
 
     @Test
     public void whenFindByIdNullThenTrackerReturnNull() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         tracker.add(new Item("test name2", "desc2"));
         Input input = new StubInput(new String[]{"4", "0", "6"});
@@ -60,7 +71,6 @@ public class StubTest {
 
     @Test
     public void whenFindByNameThenTrackerReturnItemsWithSameName() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         tracker.add(new Item("test name", "desc2"));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
