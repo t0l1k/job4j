@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
+import ru.job4j.start.StartUi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
+    private StartUi startUi;
     private List<UserAction> actions = new ArrayList<>();
 
     public MenuTracker(Input input, Tracker tracker) {
@@ -19,14 +21,14 @@ public class MenuTracker {
         return this.actions.size();
     }
 
-    public void fillActions() {
+    public void fillActions(StartUi ui) {
         this.actions.add(new AddItem());
         this.actions.add(new ShowAll());
         this.actions.add(new EditItem());
         this.actions.add(new DeleteItem());
         this.actions.add(new FindById());
         this.actions.add(new FindByName());
-        this.actions.add(new Quit());
+        this.actions.add(new Quit(ui));
     }
 
     public void select(int key) {

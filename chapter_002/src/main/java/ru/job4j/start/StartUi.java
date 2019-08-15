@@ -6,6 +6,7 @@ import ru.job4j.tracker.Tracker;
 public class StartUi {
     private Tracker tracker;
     private Input input;
+    private boolean running;
 
     public StartUi(Input input, Tracker tracker) {
         this.tracker = tracker;
@@ -16,12 +17,17 @@ public class StartUi {
         new StartUi(new ConsoleInput(), new Tracker()).init();
     }
 
+    public void quit() {
+        running = false;
+    }
+
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
+        running = true;
         do {
             menu.show();
             menu.select(Integer.valueOf(input.ask("select:")));
-        } while (!"y".equals(this.input.ask("Exit?(y):")));
+        } while (running);
     }
 }

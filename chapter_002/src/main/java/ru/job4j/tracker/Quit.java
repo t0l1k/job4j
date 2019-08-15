@@ -1,8 +1,15 @@
 package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
+import ru.job4j.start.StartUi;
 
 public class Quit implements UserAction {
+    private StartUi startUI;
+
+    public Quit(StartUi startUI) {
+        this.startUI = startUI;
+    }
+
     @Override
     public int key() {
         return 6;
@@ -10,7 +17,7 @@ public class Quit implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.exit(0);
+        startUI.quit();
     }
 
     @Override
