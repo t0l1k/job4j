@@ -8,5 +8,4 @@ public class House {
         this.builder = builder;
         this.project = project;
     }
-
 }
