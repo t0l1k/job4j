@@ -1,8 +1,8 @@
 package ru.job4j.inheritance;
 
 public class Doctor extends Profession {
-    public Doctor() {
-        name = "Dr. Aibolit";
+    public Doctor(String name) {
+        super(name);
     }
 
     public Diagnose heal(Pacient pacient) {

@@ -3,10 +3,14 @@ package ru.job4j.inheritance;
 import java.util.Date;
 
 public class Profession {
-    protected String name;
+    private String name;
     protected String surname;
     protected String education;
     protected Date birthday;
+
+    public Profession(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
