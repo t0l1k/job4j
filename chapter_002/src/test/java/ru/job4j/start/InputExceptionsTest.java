@@ -27,10 +27,10 @@ public class InputExceptionsTest {
 
     @Test
     public void whenInvalidInput() {
-        ValidateInput input = new ValidateInput(new StubInput(new String[]{"invalid","1"}));
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"invalid", "1"}));
         ArrayList<Integer> arr = new ArrayList<Integer>();
         arr.add(1);
         input.ask("Enter", arr);
-        Assert.assertThat(this.mem.toString(),is("enter valid data\n"));
+        Assert.assertThat(this.mem.toString(), is("enter valid data\n"));
     }
 }
