@@ -3,6 +3,8 @@ package ru.job4j.start;
 import ru.job4j.tracker.MenuTracker;
 import ru.job4j.tracker.Tracker;
 
+import java.util.ArrayList;
+
 public class StartUi {
     private Tracker tracker;
     private Input input;
@@ -14,7 +16,7 @@ public class StartUi {
     }
 
     public static void main(String[] args) {
-        new StartUi(new ConsoleInput(), new Tracker()).init();
+        new StartUi(new ValidateInput(), new Tracker()).init();
     }
 
     public void quit() {
@@ -24,10 +26,11 @@ public class StartUi {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions(this);
+        ArrayList<Integer> keys = menu.getKeys();
         running = true;
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("select:")));
+            menu.select(Integer.valueOf(input.ask("select:", keys)));
         } while (running);
     }
 }

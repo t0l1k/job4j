@@ -35,6 +35,14 @@ public class MenuTracker {
         this.actions.get(key).execute(this.input, this.tracker);
     }
 
+    public ArrayList<Integer> getKeys() {
+        ArrayList<Integer> keys = new ArrayList();
+        for (UserAction action : this.actions) {
+            keys.add(action.key());
+        }
+        return keys;
+    }
+
     public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
