@@ -9,7 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.is;
 
 public class InputExceptionsTest {
     private final PrintStream out = System.out;
@@ -31,6 +31,24 @@ public class InputExceptionsTest {
         ArrayList<Integer> arr = new ArrayList<Integer>();
         arr.add(1);
         input.ask("Enter", arr);
-        Assert.assertThat(this.mem.toString(), is("enter valid data\n"));
+        Assert.assertThat(this.mem.toString(), is("enter valid data\r\n"));
+    }
+
+    @Test
+    public void whenInvalidInputMinusOne() {
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"-1", "6"}));
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        arr.add(6);
+        input.ask("Enter", arr);
+        Assert.assertThat(this.mem.toString(), is("enter valid data\r\n"));
+    }
+
+    @Test
+    public void whenInvalidInputA() {
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"a", "6"}));
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        arr.add(6);
+        input.ask("Enter", arr);
+        Assert.assertThat(this.mem.toString(), is("enter valid data\r\n"));
     }
 }

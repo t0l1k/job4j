@@ -22,7 +22,7 @@ public class ValidateInput implements Input {
                 value = this.input.ask(question, range);
                 invalid = false;
             } catch (MenuOutException moe) {
-                System.out.println("enter valid data" + " " + range);
+                System.out.println(moe.getMessage());
             } catch (NumberFormatException nfe) {
                 System.out.println("enter valid data");
             }
