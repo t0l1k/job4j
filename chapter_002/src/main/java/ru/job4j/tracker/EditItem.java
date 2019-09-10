@@ -2,10 +2,9 @@ package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
 
-public class EditItem implements UserAction {
-    @Override
-    public int key() {
-        return 2;
+class EditItem extends BaseAction {
+    public EditItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -19,10 +18,5 @@ public class EditItem implements UserAction {
         } else {
             System.out.println("Item replace failed.");
         }
-    }
-
-    @Override
-    public String info() {
-        return "2: Edit Item";
     }
 }

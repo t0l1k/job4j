@@ -2,10 +2,9 @@ package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
 
-public class FindByName implements UserAction {
-    @Override
-    public int key() {
-        return 5;
+class FindByName extends BaseAction {
+    public FindByName(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -15,10 +14,5 @@ public class FindByName implements UserAction {
         for (int i = 0; i < arr.length; i++) {
             System.out.println("Found:" + arr[i]);
         }
-    }
-
-    @Override
-    public String info() {
-        return "5: Find Item by Name";
     }
 }

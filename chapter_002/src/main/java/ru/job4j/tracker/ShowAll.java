@@ -2,10 +2,9 @@ package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
 
-public class ShowAll implements UserAction {
-    @Override
-    public int key() {
-        return 1;
+class ShowAll extends BaseAction {
+    public ShowAll(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -13,10 +12,5 @@ public class ShowAll implements UserAction {
         for (Item item : tracker.getAll()) {
             System.out.println(item);
         }
-    }
-
-    @Override
-    public String info() {
-        return "1: Show all Items";
     }
 }

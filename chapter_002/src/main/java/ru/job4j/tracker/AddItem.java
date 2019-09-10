@@ -2,10 +2,9 @@ package ru.job4j.tracker;
 
 import ru.job4j.start.Input;
 
-public class AddItem implements UserAction {
-    @Override
-    public int key() {
-        return 0;
+class AddItem extends BaseAction {
+    public AddItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -15,10 +14,5 @@ public class AddItem implements UserAction {
         Item item = new Item(name, desc, System.currentTimeMillis());
         tracker.add(item);
         System.out.println("Added Item:" + item);
-    }
-
-    @Override
-    public String info() {
-        return "0: Add new Item";
     }
 }
