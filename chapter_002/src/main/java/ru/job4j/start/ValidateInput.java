@@ -22,9 +22,9 @@ public class ValidateInput implements Input {
                 value = this.input.ask(question, range);
                 invalid = false;
             } catch (MenuOutException moe) {
-                System.out.println(moe.getMessage());
+                System.out.println("Please select key from menu.");
             } catch (NumberFormatException nfe) {
-                System.out.println("enter valid data");
+                System.out.println("Please enter validate data again.");
             }
         } while (invalid);
         return value;
