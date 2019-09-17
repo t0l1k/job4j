@@ -6,6 +6,7 @@ import ru.job4j.tracker.Tracker;
 import java.util.ArrayList;
 
 public class StartUi {
+
     private Tracker tracker;
     private Input input;
     private boolean running;
