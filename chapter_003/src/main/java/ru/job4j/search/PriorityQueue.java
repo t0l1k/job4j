@@ -13,26 +13,26 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        int index = 0;
-        switch (task.getPriority()) {
-            case 1:
-                index = 0;
-                break;
-            case 3:
-                index = 1;
-                break;
-            case 5:
-                index = 5;
-                break;
-        }
-        if (tasks.size() > index) {
-            tasks.add(index, task);
-        } else {
-            tasks.add(task);
-        }
+        tasks.add(task);
+        tasks.sort(new TaskPriorityComparator());
     }
 
     public Task take() {
         return this.tasks.poll();
+    }
+
+    private class TaskPriorityComparator implements java.util.Comparator<Task> {
+        @Override
+        public int compare(Task a, Task b) {
+            int idx = 0;
+            if (a.getPriority() > b.getPriority()) {
+                idx = 1;
+            } else if (a.getPriority() == b.getPriority()) {
+                idx = 0;
+            } else if (a.getPriority() < b.getPriority()) {
+                idx = -1;
+            }
+            return idx;
+        }
     }
 }

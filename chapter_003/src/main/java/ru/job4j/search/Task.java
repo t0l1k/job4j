@@ -1,8 +1,8 @@
 package ru.job4j.search;
 
 public class Task {
-    private String desc;
     private int priority;
+    private String desc;
 
     public Task(String desc, int priority) {
         this.desc = desc;
@@ -15,5 +15,10 @@ public class Task {
 
     public int getPriority() {
         return priority;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Task:Desc:%s,Priority:%d", desc, priority);
     }
 }
