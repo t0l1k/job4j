@@ -2,7 +2,7 @@ package ru.job4j.sort;
 
 public class User implements Comparable<User> {
     private String name;
-    private int age;
+    private Integer age;
 
     public User(String name, int age) {
         this.name = name;
@@ -19,11 +19,6 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        if (age > o.age) {
-            return 1;
-        } else if (age < o.age) {
-            return -1;
-        }
-        return 0;
+        return age.compareTo(o.age);
     }
 }
