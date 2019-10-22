@@ -1,12 +1,13 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TrackerBase {
-    private final ArrayList<Item> items = new ArrayList<Item>();
+    private final List<Item> items = new ArrayList<Item>();
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
@@ -21,10 +22,10 @@ public class TrackerBase {
     }
 
     public boolean replace(String id, Item item) {
-        for (Item value : items) {
-            if (value.getId().equals(id)) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
                 item.setId(id);
-                items.remove(value);
+                items.remove(i);
                 items.add(item);
                 return true;
             }
@@ -33,27 +34,24 @@ public class TrackerBase {
     }
 
     public boolean delete(String id) {
-        System.out.println("test");
-        for (Item value : items) {
-            if (value != null && value.getId().equals(id)) {
-                System.out.println("found to delete," + value);
-                items.remove(value);
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
+                items.remove(i);
                 return true;
             }
-            System.out.println(value);
         }
         return false;
     }
 
-    public ArrayList<Item> getAll() {
-        ArrayList<Item> it = new ArrayList<Item>();
+    public List<Item> getAll() {
+        List<Item> it = new ArrayList<Item>();
         for (Item value : items) {
             it.add(value);
         }
         return it;
     }
 
-    public ArrayList<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         ArrayList<Item> it = new ArrayList<Item>();
         int pos = 0;
         for (Item value : items) {
