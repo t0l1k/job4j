@@ -22,8 +22,8 @@ public class TrackerTest {
         long created = System.currentTimeMillis();
         Item item = new Item("test1", "testDescription", created);
         tracker.add(item);
-        tracker.replace(tracker.findByName("test1")[0].getId(), new Item("test2", "testDescription2", created));
-        Item result = tracker.findByName("test2")[0];
+        tracker.replace(tracker.findByName("test1").get(0).getId(), new Item("test2", "testDescription2", created));
+        Item result = tracker.findByName("test2").get(0);
         assertThat(result.getName(), is("test2"));
     }
 
@@ -34,7 +34,7 @@ public class TrackerTest {
         Item item = new Item("test1", "testDescription", created);
         tracker.add(item);
         tracker.delete(item.getId());
-        assertThat(tracker.getAll().length, is(0));
+        assertThat(tracker.getAll().size(), is(0));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class TrackerTest {
         tracker.add(item);
         item = new Item("test4", "test4Description", created);
         tracker.add(item);
-        tracker.delete(tracker.findByName("test2")[0].getId());
-        assertThat(tracker.getAll().length, is(3));
+        tracker.delete(tracker.findByName("test2").get(0).getId());
+        assertThat(tracker.getAll().size(), is(3));
     }
 }

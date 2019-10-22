@@ -1,32 +1,31 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class TrackerBase {
-    private final Item[] items = new Item[100];
-    private int position = 0;
+    private final ArrayList<Item> items = new ArrayList<Item>();
 
-    public Item[] getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
     public void resetItems() {
-        Arrays.fill(items, null);
-        position = 0;
+        items.clear();
     }
 
     public Item add(Item item) {
-        this.items[this.position++] = item;
+        items.add(item);
         item.setId(this.generateId());
         return item;
     }
 
     public boolean replace(String id, Item item) {
-        for (int i = 0; i < position; i++) {
-            if (this.items[i].getId().equals(id)) {
+        for (Item value : items) {
+            if (value.getId().equals(id)) {
                 item.setId(id);
-                this.items[i] = item;
+                items.remove(value);
+                items.add(item);
                 return true;
             }
         }
@@ -34,37 +33,49 @@ public class TrackerBase {
     }
 
     public boolean delete(String id) {
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {
-                this.items[i] = null;
-                System.arraycopy(items, i + 1, items, i, position);
-                position--;
+        System.out.println("test");
+        for (Item value : items) {
+            if (value != null && value.getId().equals(id)) {
+                System.out.println("found to delete," + value);
+                items.remove(value);
                 return true;
             }
+            System.out.println(value);
         }
         return false;
     }
 
-    public Item[] getAll() {
-        return Arrays.copyOf(items, position);
+    public ArrayList<Item> getAll() {
+        ArrayList<Item> it = new ArrayList<Item>();
+        for (Item value : items) {
+            it.add(value);
+        }
+        return it;
     }
 
-    public Item[] findByName(String key) {
-        Item[] arr = new Item[position];
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> it = new ArrayList<Item>();
         int pos = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (this.items[i] != null && this.items[i].getName().equals(key)) {
-                arr[pos++] = items[i];
+        for (Item value : items) {
+            if (items.get(pos) != null && items.get(pos).getName().equals(key)) {
+                it.add(value);
             }
+            pos++;
         }
-        return Arrays.copyOf(arr, pos);
+        for (Item item : it) {
+            System.out.println(item);
+        }
+        return it;
     }
 
     public Item findById(String id) {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
-                return items[i];
+        Item[] it = new Item[items.size()];
+        int pos = 0;
+        for (Item value : items) {
+            if (items.get(pos) != null && items.get(pos).getId().equals(id)) {
+                return value;
             }
+            pos++;
         }
         return null;
     }
