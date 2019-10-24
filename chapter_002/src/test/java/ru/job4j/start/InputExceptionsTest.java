@@ -31,7 +31,8 @@ public class InputExceptionsTest {
         ArrayList<Integer> arr = new ArrayList<Integer>();
         arr.add(1);
         input.ask("Enter", arr);
-        Assert.assertThat(this.mem.toString(), is("Please enter validate data again.\r\n"));
+        String want = "Please enter validate data again." + System.lineSeparator();
+        Assert.assertThat(this.mem.toString(), is(want));
     }
 
     @Test
@@ -40,7 +41,8 @@ public class InputExceptionsTest {
         ArrayList<Integer> arr = new ArrayList<Integer>();
         arr.add(6);
         input.ask("Enter", arr);
-        Assert.assertThat(this.mem.toString(), is("Please select key from menu.\r\n"));
+        String want = "Please select key from menu." + System.lineSeparator();
+        Assert.assertThat(this.mem.toString(), is(want));
     }
 
     @Test
@@ -49,7 +51,8 @@ public class InputExceptionsTest {
         ArrayList<Integer> arr = new ArrayList<Integer>();
         arr.add(6);
         input.ask("Enter", arr);
-        Assert.assertThat(this.mem.toString(), is("Please enter validate data again.\r\n"));
+        String want = "Please enter validate data again." + System.lineSeparator();
+        Assert.assertThat(this.mem.toString(), is(want));
     }
 //
 //    @Test
