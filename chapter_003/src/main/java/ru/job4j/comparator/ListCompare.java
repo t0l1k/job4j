@@ -2,18 +2,19 @@ package ru.job4j.comparator;
 
 public class ListCompare {
     public int compare(String a, String b) {
+        int lowLenght = (a.length() > b.length() ? b.length() : a.length());
         char[] aArr = a.toCharArray();
         char[] bArr = b.toCharArray();
-        int i = 0;
-        while (true) {
-            if (Integer.compare(aArr[i], bArr[i]) == -1 || aArr.length - 1 == i && bArr.length - 1 > i) {
+        for (int i = 0; i < lowLenght; i++) {
+            int cmp = Integer.compare(aArr[i], bArr[i]);
+            if (cmp == -1) {
                 return -1;
-            } else if (Integer.compare(aArr[i], bArr[i]) == 1) {
+            } else if (cmp == 1) {
                 return 1;
-            } else if (aArr.length == bArr.length && aArr.length - 1 == i) {
-                break;
             }
-            i++;
+        }
+        if (lowLenght == a.length() && lowLenght < b.length()) {
+            return -1;
         }
         return 0;
     }
